@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="demo"><h2>Let AJAX change this text</h2></div>
+
+<button type="button" onclick="loadDoc()">Change Content</button>
+
+<button type="button" onclick="checkService()">Change Content</button>
+
+<button type="button" onclick="readCookie()">Read Cookie</button>
+
+<script>
+
+function checkService(){
+	 var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    console.log( xhttp.responseText);
+  };
+	 xhttp.open("GET", "/api/getAllDash", true);
+  xhttp.send();
+}
+
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      document.getElementById("demo").innerHTML = xhttp.responseText;
+    }
+  };
+  xhttp.open("GET", "http://localhost:8980", true);
+  xhttp.send();
+}
+
+function readCookie(){
+  var myCookie = document.cookie.match('(^|;)\\s*mycookie\\s*=\\s*([^;]+)');
+  console.log(myCookie.pop());
+}
+</script>
+
+</body>
+</html>
+
