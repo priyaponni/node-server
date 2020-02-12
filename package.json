@@ -4,16 +4,15 @@
   "devDependencies": {
     "body-parser": "^1.14.2",
     "client-sessions": "^0.7.0",
-    "express": "latest",
-    "consolidate" : "latest",
-    "mustache" : "latest"
-	},
-	"engines": {
-    "node": ">=0.10.0"
+    "express": "latest"
+  },
+  "engines": {
+    "node": ">=10.10.0"
   },
   "scripts": {
     "test": "grunt test"
   },
   "dependencies": {
+    "ejs": "^3.0.1"
   }
 }

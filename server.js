@@ -6,16 +6,14 @@
 var path = require('path');
 var express = require('express');
 var bodyParser = require('body-parser');
-var engines = require('consolidate');
 
 var app = express();
 
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'views')));
 app.set('views', __dirname + '/views');
-app.engine('html', engines.mustache);
+app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
-
-//app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(req, res, next){
 	res.header("Access-Control-Allow-Origin", "*");
@@ -23,7 +21,6 @@ app.use(function(req, res, next){
 	res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, x-titanium-id");
 	next();
 });
-
 
 app.use(function (err, req, res, next) {
   console.error('--------------------' + err.stack);
@@ -94,7 +91,11 @@ app.get('/oauth', function (req, res) {
   res.render('oauthcallback.html');
 });
 
-
+app.get('/paypal', function (req, res) {
+    //console.log('CALLING SERVER');
+    // res.cookie('mycookie', 'cookieValue');
+    res.render('paypal.html');
+  });
 
 app.get('/', function (req, res) {
   //console.log('CALLING SERVER');
