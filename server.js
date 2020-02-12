@@ -103,6 +103,6 @@ app.get('/', function (req, res) {
   res.render('index.html');
 });
 
-var server = app.listen(8980, function () {
+var server = app.listen(process.env.PORT, function () {
   console.log('Express running');
 });
