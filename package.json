@@ -10,6 +10,7 @@
     "node": ">=10.10.0"
   },
   "scripts": {
+      "start": "node server.js",
     "test": "grunt test"
   },
   "dependencies": {
